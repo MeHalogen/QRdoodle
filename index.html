@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon QR Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cartoon QR Generator</h1>
+        <p class="subtitle">Make your links come alive with cartoon QR codes!</p>
+        <div class="input-group">
+            <input type="text" id="qrInput" placeholder="Enter your URL, text, or phone number">
+            <button id="generateBtn">Generate QR Code</button>
+        </div>
+        <div class="style-group">
+            <label>Style:</label>
+            <select id="stylePreset">
+                <option value="cloud">Cloud Bubble</option>
+                <option value="speech">Speech Bubble</option>
+                <option value="rounded">Doodle Frame</option>
+                <option value="smile">Smiley Frame</option>
+            </select>
+        </div>
+        <div class="color-group">
+            <label>Primary Color:</label>
+            <input type="color" id="primaryColor" value="#ff9f6b">
+            <label>Secondary Color:</label>
+            <input type="color" id="secondaryColor" value="#ffffff">
+        </div>
+        <div class="size-group">
+            <label>Size:</label>
+            <input type="range" id="qrSize" min="120" max="520" value="240">
+        </div>
+        <div id="qrResult" class="qr-result"></div>
+        <div class="download-group">
+            <button id="downloadPng">Download PNG</button>
+        </div>
+        <footer>Made with <span style="color:#ff9f6b;">&#10084;&#65039;</span> — Cartoon QR Generator</footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
