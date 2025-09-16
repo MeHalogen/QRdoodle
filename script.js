@@ -85,23 +85,7 @@ function downloadQRAsPNG() {
   if (!qrCode) return alert('Generate a QR code first!');
 
   const style = stylePreset.value;
-
-  if (style === "glowmatrix") {
-    // Neon glow requires canvas rendering
-    setTimeout(() => {
-      html2canvas(qrResult, {
-        backgroundColor: null, // keep transparent bg
-        scale: 3               // high resolution
-      }).then(canvas => {
-        const link = document.createElement("a");
-        link.download = `QR-${style}.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    }, 200);
-  } else {
-    qrCode.download({ name: `QR-${style}`, extension: "png" });
-  }
+  qrCode.download({ name: `QR-${style}`, extension: "png" });
 }
 
 downloadPng.addEventListener('click', downloadQRAsPNG);
