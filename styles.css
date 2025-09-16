@@ -174,6 +174,63 @@ select:focus {
     margin-bottom: 14px;
 }
 
+/* 📥 Download Button Styling */
+#downloadPng {
+    background: linear-gradient(135deg, #ff9f6b 0%, #ff7b7b 50%, #ff9f6b 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 18px 32px;
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(255, 159, 107, 0.4), 
+                0 4px 12px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border: 3px solid #fff;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+#downloadPng::before {
+    content: "📥 ";
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+#downloadPng:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 159, 107, 0.5), 
+                0 6px 15px rgba(0, 0, 0, 0.2),
+                inset 0 2px 6px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #ffb380 0%, #ff8f8f 50%, #ffb380 100%);
+}
+
+#downloadPng:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(255, 159, 107, 0.4), 
+                0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+#downloadPng::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    transition: transform 0.6s;
+}
+
+#downloadPng:hover::after {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
 /* ---------------- QR FRAME STYLES ---------------- */
 
 /* 🟦 PixelPop (Bold Retro Blocks) */
@@ -246,22 +303,4 @@ select:focus {
 @keyframes orbit-spin {
   0% { transform: rotate(0); }
   100% { transform: rotate(360deg); }
-}
-
-/* ✨ GlowMatrix (Neon Tech) */
-.qr-frame.glowmatrix {
-  --primary-color: #00ffcc; /* default fallback */
-  border-radius: 20px;
-  animation: glowpulse 2s infinite alternate;
-  padding: 20px;
-  box-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color);
-}
-
-.qr-result.glow-effect canvas {
-  filter: brightness(1.2) contrast(1.3) drop-shadow(0 0 8px var(--primary-color)) drop-shadow(0 0 16px var(--primary-color));
-}
-
-@keyframes glowpulse {
-  from { box-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color); }
-  to   { box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color); }
 }

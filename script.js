@@ -24,8 +24,6 @@ function getDotsOptions(style, primary) {
       return { type: 'classy-rounded', color: primary }; // stripe-like with rounded edges
     case 'orbit':
       return { type: 'extra-rounded', color: primary }; // planets/circles
-    case 'glowmatrix':
-      return { type: 'square', color: primary }; // base squares + CSS glow
     default:
       return { type: 'square', color: primary };
   }
@@ -62,10 +60,10 @@ function generateQR() {
     }
   });
 
-  // Extra effects for GlowMatrix
+  // Special neon glow for GlowMatrix
   if (style === 'glowmatrix') {
     qrResult.classList.add('glow-effect');
-    qrResult.style.setProperty('--primary-color', primary); // 🌈 glow color = primary
+    qrResult.style.setProperty('--primary-color', primary); // neon glow uses primary
   } else {
     qrResult.classList.remove('glow-effect');
     qrResult.style.removeProperty('--primary-color');
@@ -76,13 +74,9 @@ function generateQR() {
 
 generateBtn.addEventListener('click', generateQR);
 
-// Update QR live on size change
+// Live update on changes
 qrSize.addEventListener('input', () => generateQR());
-
-// Update QR when style changes
 stylePreset.addEventListener('change', () => generateQR());
-
-// Update QR when colors change
 primaryColor.addEventListener('input', () => generateQR());
 secondaryColor.addEventListener('input', () => generateQR());
 
@@ -93,11 +87,11 @@ function downloadQRAsPNG() {
   const style = stylePreset.value;
 
   if (style === "glowmatrix") {
-    // Wait a tick so the glow CSS is applied
+    // Neon glow requires canvas rendering
     setTimeout(() => {
       html2canvas(qrResult, {
         backgroundColor: null, // keep transparent bg
-        scale: 3               // higher resolution
+        scale: 3               // high resolution
       }).then(canvas => {
         const link = document.createElement("a");
         link.download = `QR-${style}.png`;
