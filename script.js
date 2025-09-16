@@ -35,11 +35,11 @@ function generateQR() {
     }
     const size = parseInt(qrSize.value, 10);
     const qrDiv = document.createElement('div');
-    qrDiv.style = getFrameStyle() + ` border: 4px solid #2b2b2b; display: inline-block; padding: 16px;`;
+    qrDiv.style = `display: flex; justify-content: center; align-items: center; width: ${size}px; height: ${size}px; box-sizing: content-box; position: relative; overflow: visible; background: none; border: none;`;
     if (stylePreset.value === 'smile') {
         const smiley = document.createElement('div');
         smiley.textContent = '😊';
-        smiley.style = 'position: absolute; top: -28px; right: 18px; font-size: 2rem;';
+        smiley.style = 'position: absolute; top: -28px; right: 18px; font-size: 2rem; z-index: 2;';
         qrDiv.appendChild(smiley);
     }
     const qr = new QRCode(qrDiv, {
@@ -53,7 +53,13 @@ function generateQR() {
     qrResult.appendChild(qrDiv);
 }
 
+
 generateBtn.addEventListener('click', generateQR);
+
+// Update QR code when size slider changes
+qrSize.addEventListener('input', () => {
+    generateQR();
+});
 
 // Download PNG
 function downloadQRAsPNG() {
