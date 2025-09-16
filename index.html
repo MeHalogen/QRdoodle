@@ -1,51 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRdoodle</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QRdoodle</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="upper-container">
-        <h1>QRdoodle</h1>
-        <h2 class="subtitle">Make your links come alive with QR codes!</h2>
-        <img src="panda1.png" alt="Background Image">
+  <div class="upper-container">
+    <h1>QRdoodle</h1>
+    <h2 class="subtitle">Make your links come alive with QR codes!</h2>
+    <img src="panda1.png" alt="Background Image" class="panda-img">
+  </div>
+
+  <div class="container">
+    <!-- Input -->
+    <div class="input-group">
+      <input type="text" id="qrInput" placeholder="Enter your URL, text, or phone number">
+      <button id="generateBtn">Generate QR Doodle</button>
     </div>
-    <div class="container">
-        <div class="input-group">
-            <input type="text" id="qrInput" placeholder="Enter your URL, text, or phone number">
-            <button id="generateBtn">Generate QR Doodle</button>
-        </div>
-        <div class="style-group">
-            <label>Style:</label>
-            <select id="stylePreset">
-                <option value="cloud">Cloud Bubble</option>
-                <option value="speech">Speech Bubble</option>
-                <option value="rounded">Doodle Frame</option>
-                <option value="smile">Smiley Frame</option>
-            </select>
-        </div>
-        <div class="color-group">
-            <label>Primary Color:</label>
-            <input type="color" id="primaryColor" value="#ff9f6b">
-            <label>Secondary Color:</label>
-            <input type="color" id="secondaryColor" value="#ffffff">
-        </div>
-        <div class="size-group">
-            <label>Size:</label>
-            <input type="range" id="qrSize" min="120" max="520" value="240">
-        </div>
-        <div class="qr-area">
-            <div id="qrResult" class="qr-result"></div>
-        </div>
-        <div class="download-group">
-            <button id="downloadPng">Download your QRdoodle</button>
-        </div>
-        <footer>Made with <span style="color:#ff9f6b;">&#10084;&#65039;</span> by Mehal</footer>
+
+    <!-- Style Preset -->
+    <div class="style-group">
+      <label for="stylePreset">Style:</label>
+      <select id="stylePreset">
+        <option value="pixelpop">PixelPop</option>
+        <option value="sketchcode">SketchCode</option>
+        <option value="stripes">Stripes</option>
+        <option value="orbit">Orbit</option>
+        <option value="glowmatrix">GlowMatrix</option>
+      </select>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <script src="script.js"></script>
+
+    <!-- Colors -->
+    <div class="color-group">
+      <label for="primaryColor">Primary Color:</label>
+      <input type="color" id="primaryColor" value="#ff9f6b">
+      <label for="secondaryColor">Secondary Color:</label>
+      <input type="color" id="secondaryColor" value="#ffffff">
+    </div>
+
+    <!-- Size -->
+    <div class="size-group">
+      <label for="qrSize">Size:</label>
+      <input type="range" id="qrSize" min="120" max="520" value="240">
+    </div>
+
+    <!-- QR Result -->
+    <div class="qr-area">
+      <div id="qrResult" class="qr-result"></div>
+    </div>
+
+    <!-- Download -->
+    <div class="download-group">
+      <button id="downloadPng">Download your QRdoodle</button>
+    </div>
+  </div>
+
+  <footer>
+    Made with <span style="color:#ff9f6b;">&#10084;&#65039;</span> by Mehal
+  </footer>
+
+  <!-- ✅ Use qr-code-styling instead of qrcodejs -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
