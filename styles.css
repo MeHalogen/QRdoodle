@@ -1,12 +1,38 @@
 body {
+    position: relative;
     font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(120deg, #f7efe7 0%, #e0f7ff 100%);
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    /* background: linear-gradient(120deg, #f7efe7 0%, #e0f7ff 100%); */
+    background-image: url(backgr.png);
+    z-index: 0;
+}
+
+.upper-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    /* margin-top: 24px; */
+    align-items: center;
+}
+
+.upper-container img {
+  display: block;
+  margin: 0 auto; /* Centers horizontally */
+}
+
+img{
+    width: 550px;
+    height: auto;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 100px;
+    margin-bottom: -50px;
 }
 .container {
-    max-width: 420px;
+    max-width: 1200px;
     margin: 48px auto;
     background: #fff;
     border-radius: 36px;
@@ -42,12 +68,13 @@ h1 {
     background: #fffbe9;
 }
 .input-group button {
-    background: linear-gradient(90deg,#6fb8ff,#ff9f6b);
+    background: linear-gradient(90deg,#0e6ac5,#d25411);
     color: #fff;
     border: none;
     border-radius: 14px;
     padding: 14px 22px;
     font-weight: 700;
+    font-size: 16px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: transform 0.1s;
@@ -58,11 +85,20 @@ h1 {
 .style-group, .color-group, .size-group {
     margin-bottom: 16px;
     display: flex;
+    font-size: 30px;
     align-items: center;
     gap: 12px;
 }
+
+#style-group input, .color-group input, .size-group input {
+    margin-right: 8px;
+    transform: scale(1.2);
+    font-size: 16px;
+    cursor: pointer;
+}
 .style-group label, .color-group label, .size-group label {
     font-weight: 600;
+    font-size: 30px;
     color: #2b2b2b;
 }
 .qr-result {
