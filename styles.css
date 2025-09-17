@@ -1,4 +1,8 @@
 /* 🌐 Global Styles */
+* {
+    box-sizing: border-box;
+}
+
 body {
     position: relative;
     font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
@@ -10,6 +14,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     z-index: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* 📦 Containers */
@@ -146,6 +151,87 @@ select:focus {
     font-weight: 600;
     font-size: 30px;
     color: #2b2b2b;
+}
+
+/* 🎚️ Range Slider Styling */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff9f6b 0%, #ffdca6 100%);
+    outline: none;
+    cursor: pointer;
+    margin: 8px 0;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9f6b, #ff7b7b);
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(255, 159, 107, 0.4), 
+                0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(255, 159, 107, 0.5), 
+                0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.15);
+    background: linear-gradient(135deg, #ffb380, #ff8f8f);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9f6b, #ff7b7b);
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(255, 159, 107, 0.4), 
+                0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(255, 159, 107, 0.5), 
+                0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 12px;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff9f6b 0%, #ffdca6 100%);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Size group specific styling */
+.size-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.size-group label {
+    margin-bottom: 4px;
 }
 
 /* 🖼 QR Area */
@@ -303,4 +389,391 @@ select:focus {
 @keyframes orbit-spin {
   0% { transform: rotate(0); }
   100% { transform: rotate(360deg); }
+}
+
+/* 📱 MOBILE RESPONSIVE STYLES */
+
+/* Tablet and small desktop styles */
+@media screen and (max-width: 1024px) {
+    .container {
+        margin: 24px 16px;
+        padding: 24px 20px;
+        border-radius: 24px;
+    }
+    
+    .panda-img {
+        width: 450px;
+        margin-bottom: -40px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .style-group label, .color-group label, .size-group label {
+        font-size: 24px;
+    }
+}
+
+/* Mobile styles for screens up to 768px */
+@media screen and (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Fixed attachment can cause issues on mobile */
+    }
+    
+    .container {
+        margin: 16px 12px;
+        padding: 20px 16px;
+        border-radius: 20px;
+        border: 2px solid #2b2b2b;
+    }
+    
+    .upper-container {
+        margin-bottom: 20px;
+    }
+    
+    .panda-img {
+        width: 300px;
+        margin-bottom: -30px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 16px;
+        padding: 0 10px;
+    }
+    
+    /* Input group - stack on mobile */
+    .input-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .input-group input {
+        padding: 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .input-group button {
+        padding: 16px 20px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+    
+    /* Style options - better mobile layout */
+    .style-group, .color-group, .size-group {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .style-group label, .color-group label, .size-group label {
+        font-size: 18px;
+        min-width: 100px;
+    }
+    
+    select {
+        padding: 14px 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-width: 150px;
+    }
+    
+    /* Color inputs */
+    .color-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .color-group input {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid #ffdca6;
+    }
+    
+    /* Size slider */
+    .size-group input[type="range"] {
+        width: 100%;
+        margin-top: 8px;
+        height: 16px; /* Larger track for mobile */
+        background: linear-gradient(to right, #ff9f6b 0%, #ffdca6 100%);
+        border: 3px solid #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Mobile-optimized range slider thumb */
+    .size-group input[type="range"]::-webkit-slider-thumb {
+        width: 36px;  /* Larger thumb for easier touch */
+        height: 36px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 12px rgba(255, 159, 107, 0.4), 
+                    0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .size-group input[type="range"]::-moz-range-thumb {
+        width: 36px;
+        height: 36px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 12px rgba(255, 159, 107, 0.4), 
+                    0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .size-group input[type="range"]::-moz-range-track {
+        height: 16px;
+        border: 3px solid #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* QR Area adjustments */
+    .qr-area {
+        margin-bottom: 20px;
+    }
+    
+    .qr-result {
+        margin: 20px 0 16px 0;
+        min-height: 80px;
+    }
+    
+    /* Download button mobile optimization */
+    #downloadPng {
+        padding: 16px 24px;
+        font-size: 16px;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    #downloadPng:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+    
+    /* QR Frame mobile adjustments */
+    .qr-frame.pixelpop {
+        border: 4px solid #000;
+        padding: 12px;
+    }
+    
+    .qr-frame.sketchcode {
+        border: 3px dashed #333;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    
+    .qr-frame.stripes {
+        border-radius: 10px;
+        border: 2px solid #888;
+        padding: 12px;
+    }
+    
+    .qr-frame.orbit {
+        padding: 16px;
+        border: 3px solid #4a90e2;
+    }
+    
+    .qr-frame.orbit::before {
+        top: -10px; left: -10px; right: -10px; bottom: -10px;
+    }
+    
+    .qr-frame.orbit::after {
+        top: -20px; left: -20px; right: -20px; bottom: -20px;
+    }
+    
+    footer {
+        font-size: 0.9rem;
+        margin-top: 16px;
+        padding: 0 16px;
+    }
+}
+
+/* Small mobile styles for screens up to 480px */
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 12px 8px;
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+    
+    .panda-img {
+        width: 250px;
+        margin-bottom: -25px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
+    
+    .input-group input, .input-group button {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .style-group label, .color-group label, .size-group label {
+        font-size: 16px;
+    }
+    
+    select {
+        padding: 12px 10px;
+        min-width: 120px;
+    }
+    
+    #downloadPng {
+        padding: 14px 20px;
+        font-size: 15px;
+        max-width: 240px;
+    }
+    
+    #downloadPng::before {
+        font-size: 18px;
+    }
+    
+    /* Enhanced range slider for small screens */
+    .size-group input[type="range"] {
+        height: 18px; /* Even larger for very small screens */
+    }
+    
+    .size-group input[type="range"]::-webkit-slider-thumb {
+        width: 40px;  /* Maximum thumb size for easiest touch */
+        height: 40px;
+        border: 4px solid #fff;
+    }
+    
+    .size-group input[type="range"]::-moz-range-thumb {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #fff;
+    }
+    
+    .size-group input[type="range"]::-moz-range-track {
+        height: 18px;
+    }
+    
+    .qr-frame.orbit::before,
+    .qr-frame.orbit::after {
+        display: none; /* Hide orbit rings on very small screens */
+    }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media screen and (max-width: 375px) {
+    .container {
+        margin: 8px 6px;
+        padding: 14px 10px;
+    }
+    
+    .panda-img {
+        width: 200px;
+        margin-bottom: -20px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .style-group label, .color-group label, .size-group label {
+        font-size: 14px;
+    }
+    
+    #downloadPng {
+        padding: 12px 16px;
+        font-size: 14px;
+        max-width: 200px;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .panda-img {
+        width: 180px;
+        margin-bottom: -15px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .container {
+        margin: 8px;
+        padding: 12px;
+    }
+    
+    .style-group, .color-group, .size-group {
+        margin-bottom: 12px;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    #downloadPng:hover {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(255, 159, 107, 0.4), 
+                    0 4px 12px rgba(0, 0, 0, 0.15),
+                    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        background: linear-gradient(135deg, #ff9f6b 0%, #ff7b7b 50%, #ff9f6b 100%);
+    }
+    
+    #downloadPng:hover::after {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    
+    select:hover {
+        border-color: #ffdca6;
+        background: #fffbe9;
+    }
+    
+    /* Make touch targets larger */
+    .input-group button, #downloadPng {
+        min-height: 48px;
+    }
+    
+    .color-group input {
+        width: 64px;
+        height: 64px;
+    }
+    
+    /* Enhanced range slider for touch devices */
+    input[type="range"] {
+        height: 20px; /* Larger track for touch */
+        margin: 12px 0; /* More space around slider */
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        width: 42px;  /* Large thumb for easy touch interaction */
+        height: 42px;
+        border: 4px solid #fff;
+        box-shadow: 0 6px 16px rgba(255, 159, 107, 0.4), 
+                    0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        width: 42px;
+        height: 42px;
+        border: 4px solid #fff;
+        box-shadow: 0 6px 16px rgba(255, 159, 107, 0.4), 
+                    0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    input[type="range"]::-moz-range-track {
+        height: 20px;
+    }
 }
